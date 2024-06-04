@@ -1,9 +1,19 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Bienvenue{% endblock %}
+{% block title %}
+
+    {{ subject.name }}
+
+    {% endblock %}
 
 {% block body %}
 
-    <h1>Hello !</h1>
+    <h1 class="text-4xl text-center">{{ subject.name }}</h1>
+
+    {% for article in subject.articles %}
+        <p>{{ article.name }}</p>
+    {% else %}
+        <p>Aucun article trouvé pour cette catégorie.</p>
+    {% endfor %}
 
 {% endblock %}

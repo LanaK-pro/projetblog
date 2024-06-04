@@ -30,7 +30,7 @@ class MainController extends AbstractController
             ['subjects' => $subjects]);
     }
 
-    #[Route('/subject/{id}', name: 'subject_item')]
+    #[Route('/subject/{name}', name: 'subject_item')]
     public function item(Subject $subject): Response
     {
         return $this->render('main/item.html.twig',

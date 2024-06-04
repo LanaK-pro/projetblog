@@ -2,8 +2,29 @@
 
 {% block title %}Bienvenue{% endblock %}
 
+
 {% block body %}
+<h1 class="text-4xl text-center m-10">Catégories</h1>
+<div class="flex flex-wrap -mx-4">
 
-    <h1>Hello !</h1>
+    {% for subject in subjects %}
 
-{% endblock %}
+        <div class="w-full md:w-1/2 lg:w-1/3 px-4 mb-8">
+            <div class="bg-white rounded-lg shadow-md overflow-hidden flex flex-col">
+                <div class="p-4 flex-grow">
+                    <h3 class="text-lg font-semibold mb-2">{{ subject.name }}</h3>
+                    <p class="text-gray-700">Sujet</p>
+                </div>
+                <div class="p-4">
+                    <a href="{{ path('subject_item' , { id:subject.id }) }}" class="inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">plus de details sur {{ subject.name }}</a>
+                    ({{ subject.articles|length }} articles)
+                </div>
+            </div>
+        </div>
+
+
+    {% else %}
+        <p>Aucune catégorie trouvée</p>
+    {% endfor %}
+
+    {% endblock %}
